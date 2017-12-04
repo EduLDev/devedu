@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class exercicioAlzir2 {
+
+	public static void main(String[] args) {
+int[][] matriz = new int[4][3];
+		
+		Scanner ler = new Scanner(System.in);
+		 	for(int i = 0; i < 4; i++){
+		 		for(int j = 0; j < 3; j++){
+		 			System.out.println("Digite o valor"); 	
+		 		matriz[i][j] = ler.nextInt();
+		 		}
+		 	}
+		 	for (int i = 0; i < 4; i++) {
+		 		for (int j = 0; j < 3; j++) {
+		 			System.out.printf("%d ", matriz[i][j]) ;
+		 			}
+		 			System.out.println("") ;
+		 			}
+		 	}
+
+	}
+
+

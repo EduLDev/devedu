@@ -1,0 +1,146 @@
+import java.util.*;
+public class exercicoAlzir3 {
+
+	public static void main(String[] args) {
+		int lendo = 0;
+		int cod = 0;
+		/*Matrizes e vetores*/
+		int[] matriculas = {1020, 1042, 1112, 1132, 1152, 1201, 1213, 1232, 1256, 1271};
+		
+		String[] nomes = {"Ailton", "Marlos", "Rebeca", "Marco", "Jane", "Pedro", "Raquel", "Paulo", "Vitor", "Mara"};
+		
+		double[][] notas = {{7.5, 8.9, 6.5}, {8.2, 7.3, 9.4}, {10.0, 9.6, 7.1}, {6.8, 7.5, 8.1}, {8.8, 7.4, 9.2},
+		 {8.3, 7.9, 9.0}, {7.2, 8.7, 9.8}, {8.3, 7.7, 8.9}, {7.8, 7.7, 8.5}, {8.0, 7.0, 9.0}};
+		
+		double [] media = new double [10];
+		/*fim Matrizes e vetores*/
+		
+		/*laço*/
+		do{
+			
+			/* Professor esse Metodo é pra ja rodar as medias dos alunos 
+			 * antes de iniciar o programa, ele pode ficar aqui, é uma forma 
+			 * que já dispara um pre-load, as medias apareciam zeradas caso o senhor não 
+			 * for direto pra função qie calculava as medias assim que iniciar o programa;
+			 */
+			calculaMedias(matriculas, notas, media);
+			
+		/*Scanner*/	
+		Scanner lerei = new Scanner(System.in);
+		/*fim scanner*/
+		
+		/*Leitura de Dados*/
+		System.out.println("Digite '1' para ver os aluno e '2' para as medias");
+		cod = lerei.nextInt();
+		/*fim Leitura de Dados*/
+		
+		/*Opções*/
+		switch(cod){
+		case 1: 
+			imprimeDados(matriculas, nomes, notas);
+			break;
+		case 2:
+			mostrarMedias(matriculas, nomes, notas, media);
+			break;
+		case 3:
+			
+			System.out.println("Digite a Matricula");
+			lendo = lerei.nextInt();
+			pesquisaMatricula(matriculas, nomes, media,lendo);
+			
+		case 4:
+			
+			System.out.println("Digite a Matricula");
+			lendo = lerei.nextInt();
+			pesquisaMatriculaCont(matriculas, nomes, media, lendo);
+			break;
+		}
+		/*Fim Opções*/
+		
+	}while(cod != 5 );
+		/*fim laço*/	
+	
+}/*fim do metodo main*/
+
+		/*Inicio metodos*/
+		
+		/*Essa Função Imprime Dados de Forma Tabular */
+		 static void imprimeDados(int [] matricula, String [] nome, double [][] notas){
+			System.out.printf("%-12s %-12s %-12s %-12s %-12s \n","matric", "nome", "nota1","nota2","nota3" );
+			System.out.println("----------------------------------------------------");
+			for(int i = 0; i < matricula.length; i++){
+				System.out.printf("%-12s %-12s %-12s %-12s %-12s\n",matricula[i], nome[i], notas[i][0],notas[i][1],notas[i][2]);
+			}
+			
+		}
+		/*Essa Função calculas as medias, mas defini ela pra fazer um pre-load de dados 
+		 * já que quando eu digtava 3 antes de ativar a função, as medias apareciam zeradas.
+		 */
+		static double calculaMedias(int [] matriculas,double [][] notas, double [] media){
+			double divisão = 0;
+			for(int i = 0; i < matriculas.length; i++){
+				divisão = (notas [i][0] + notas [i][1] + notas [i][2])/3;
+				media[i] = divisão;				
+			}
+			return divisão;
+		}
+		/*Essa Função exibe as medias dos aluno de forma tabular, ja que eu criei um pre-load
+		 * elas aparecerão com os valores definidos  */
+		static void mostrarMedias(int [] matriculas,String [] nomes,double [][] notas, double [] media){
+			double divisão;
+			for(int i = 0; i < matriculas.length; i++){
+				System.out.printf("Matrícula %s Média %2.2f\n",nomes[i], media[i]);
+			}
+		}
+		
+		static boolean pesquisaMatricula(int []matriculas, String [] nomes, double [] media, int lendo){	
+			boolean existe = false;
+			
+			Scanner lerei = new Scanner(System.in);
+			
+				System.out.println("Digite a Matricula");
+				lendo = lerei.nextInt();
+				for(int i = 0; i < matriculas.length; i++){	
+					if(matriculas[i] == lendo ){
+						existe = true;
+					}
+					if(matriculas[i] != lendo) {
+						
+					}
+				}
+				
+				if(existe == true){
+					System.out.println("Matricula Valida");
+				}else{
+					System.out.println("Matricula Invalida");
+				}
+			
+			
+				
+			return existe;
+				
+		}
+		
+		 static boolean pesquisaMatriculaCont(int []matriculas, String [] nomes, double [] media, int lendo){	
+			boolean existe = true;	
+			for(int i = 0; i < matriculas.length-1; ++i){	
+				if(lendo == 0 ){
+					System.out.println("Zero digitado, Voltanto ao menu");
+					return existe;
+				}
+				if(matriculas[i] != lendo) {
+					existe = false;
+					
+				}
+				if(matriculas[i] == lendo) {
+					System.out.printf("O Aluno(a) %s de Matrícula %d tem media de %2.2f  no indice %d \n\n",nomes[i], matriculas [i], media[i], i);	
+					existe = true;
+					
+				}
+			}
+				if(existe == false){
+				System.out.println("Matricula Inexistente");
+				}
+			return existe;	
+		}
+}

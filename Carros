@@ -1,0 +1,10 @@
+public class Carro {
+	public String fabricante;
+	public String nome;
+	public double valor;
+	public int qtdePortas;	
+}
+	
+	
+
+

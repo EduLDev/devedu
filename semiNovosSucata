@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class SemiNovosSucata {
+
+	public static void main(String[] args) {
+		int cod = 0;
+		/*aqui eu criei um objeto do tipo carro*/
+		Carro [] meuCarro;
+		/*Aqui eu eu chamei ele aqui e criei o vetor */
+		meuCarro = new Carro[4];
+		/*inicio atribuição de valores*/
+		
+		
+		/*toda vez que for declara algum dado ao veto tu usa essa estrutura*/
+	/*	nome do vetor[posição no vetor]= new @objeto			*/
+		meuCarro[0] = new Carro();
+		/*ai é so declarar ex: meuCarro[0].variavel = valor da variavel*/
+		meuCarro[0].fabricante = "Fiat";
+		meuCarro[0].nome = "Argo";
+		meuCarro[0].qtdePortas = 4; 
+		meuCarro[0].valor = 80.000;	
+				
+		meuCarro[1] = new Carro();
+		meuCarro[1].fabricante = "VW";
+		meuCarro[1].nome = "Fusca";
+		meuCarro[1].qtdePortas = 2; 
+		meuCarro[1].valor = 3.000;	
+		
+		meuCarro[2] = new Carro();
+		meuCarro[2].fabricante = "Duster";
+		meuCarro[2].nome = "Renault";
+		meuCarro[2].qtdePortas = 4; 
+		meuCarro[2].valor = 90.000;	
+		
+		meuCarro[3] = new Carro();
+		meuCarro[3].fabricante = "Fiat";
+		meuCarro[3].nome = "Uno de Firma";
+		meuCarro[3].qtdePortas = 2; 
+		meuCarro[3].valor = 25.000;	
+		/*fim atribuição*/
+		Scanner ler = new Scanner(System.in);
+		
+		/*Inicio laço*/
+		do{
+		System.out.println("1 - Para listar Todos os Veiculos.\n2 - Para listar os carros com valor acima de 80 mil.\n3 - Para listar os veiculos da fabricante Fiat.\n4 - para sair.");
+		cod = ler.nextInt();
+		switch(cod){
+		
+		case 1:
+			/*mostrar de forma tubular*/
+			System.out.printf("%-12s %-12s %-12s %-12s \n","Nome", "Marca", "portas" ,"Valor" );
+			System.out.println("----------------------------------------------------");
+			for(int i = 0; i < meuCarro.length; i++ ) {
+				System.out.printf("%-12s %-12s %-12s %-12s \n",meuCarro[i].nome, meuCarro[i].fabricante, meuCarro[i].qtdePortas,meuCarro[i].valor );
+			}
+			System.out.println("\n");
+			break;
+		case 2:
+			/*mostrar carro com valor maior que 50 pila*/
+			System.out.printf("%-12s %-12s %-12s %-12s \n","Nome", "Marca", "portas" ,"Valor" );
+			System.out.println("----------------------------------------------------");
+			for(int i = 0; i < meuCarro.length; i++) {
+				if(meuCarro[i].valor > 50.000) {
+					System.out.printf("%-12s %-12s %-12s %-12s \n",meuCarro[i].nome, meuCarro[i].fabricante, meuCarro[i].qtdePortas,meuCarro[i].valor );
+				}
+			}
+			System.out.println("\n");
+			break;
+		case 3:
+			/*Mostrar carros da fabricante fiat*/
+			System.out.printf("%-12s %-12s %-12s %-12s \n","Nome", "Marca", "portas" ,"Valor" );
+			System.out.println("----------------------------------------------------");
+			for(int i = 0; i < meuCarro.length; i++) {
+				if(meuCarro[i].fabricante == "Fiat") {
+					System.out.printf("%-12s %-12s %-12s %-12s \n",meuCarro[i].nome, meuCarro[i].fabricante, meuCarro[i].qtdePortas,meuCarro[i].valor );
+				}
+			}
+			System.out.println("\n");
+			break;
+		}
+			
+		}while(cod != 4);
+		/*fim de laço*/
+		}
+	
+		
+	
+	}
+		
+
